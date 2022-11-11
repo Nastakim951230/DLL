@@ -1,15 +1,17 @@
-
-#include <windows.h>
+#include <Windows.h>
+#include <stdio.h>
+#include "Struktura.h"
 #define PATH L"DLLCode.dll"
-typedef int(_cdecl* MyFunction)(LPWSTR);
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-    LPSTR lpCmdLine, int nCmdShow)
+
+
+
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
-    
-    HINSTANCE MyDLL;
-    if ((MyDLL = LoadLibrary(PATH)) == NULL) return 1;
-    MyFunction myFun = (MyFunction)GetProcAddress(MyDLL, "ReadFile");
-    myFun(L"./DLL/UsingDLLWinAPI/Users.csv");
-    FreeLibrary(MyDLL);//отключение DLL
-    return 0;
+	HINSTANCE hMyDLL;
+	if ((hMyDLL = LoadLibrary(PATH)) == NULL) return 1;
+	forReadData myFun = (forReadData)GetProcAddress(hMyDLL, "FileRead");
+	struct person* pers = calloc(5000, sizeof(struct person));
+	myFun(pers);
+	FreeLibrary(hMyDLL);
+	return 0;
 }

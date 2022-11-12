@@ -31,8 +31,8 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 void FileRead(struct person* pers)
 {
 
-
-    HANDLE Start = CreateFile(L"C:\\Users\\nasty\\Desktop\\Модуль\\МДК 01. 04\\Dll\\UsingDLLWinAPI\\DLLCode\\Users.csv", //Ссылка на открытие файла
+    //(если не работае нужно поставить суда полную ссылку файла)
+    HANDLE Start = CreateFile(L"C:\\Users\\ТрифоноваАР\\source\\repos\\DLL\\UsingDLLWinAPI\\DLLCode\\Users2.csv", //Ссылка на открытие файла
         GENERIC_READ,//Открытие для чтения
         FILE_SHARE_READ,//Чтение
         NULL, // Защита по умолчанию
@@ -47,8 +47,8 @@ void FileRead(struct person* pers)
         return;
     }
     DWORD countFileSymbols;
-    LPCSTR argumentsFromFile = calloc(3099, sizeof(CHAR));
-    if (!ReadFile(Start, argumentsFromFile, 3099, &countFileSymbols, NULL)) //Проверка на првильность чтения данных
+    LPCSTR argumentsFromFile = calloc(5000, sizeof(CHAR));
+    if (!ReadFile(Start, argumentsFromFile, 5000, &countFileSymbols, NULL)) //Проверка на првильность чтения данных
     {
         MessageBox(NULL, L"Возникла ошибка при чтении данных!", L"Оповещение", MB_OK);
         return 0;
@@ -84,7 +84,7 @@ void searchSurname(struct person* pers) //Поиск фамилии
     struct person* People = malloc(sizeof(struct person));
     struct person* forCurrentPeople;
     int j = 0, countOfRows = 1;
-    char* forComprasion = "Гуськов";
+    char* forComprasion = "Морозова";
     for (int i = 0; i < 100; i++)
     {
         if (strstr(pers[i].Familia, forComprasion) != NULL)
@@ -103,7 +103,7 @@ void searchSurnameIvanova(struct person* pers) //Поиск фамилии по Иванова
     struct person* current = malloc(sizeof(struct person));
     struct person* forCurrentPeople;
     int j = 0, countOfRows = 1;
-    char* forComprasion = "Иванова";
+    char* forComprasion = "Иванов";
     for (int i = 0; i < 100; i++)
     {
         if (strstr(pers[i].Familia, forComprasion) != NULL)

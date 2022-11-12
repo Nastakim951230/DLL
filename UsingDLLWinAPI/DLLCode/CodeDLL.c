@@ -42,13 +42,12 @@ void FileRead(struct person* pers)
 
     if (Start == INVALID_HANDLE_VALUE) //Проверка неоткрывается ли файл
     {
-
         MessageBox(NULL, L"Ошибка, нельзя открыть файл", L"Оповещение", MB_OK);
         return;
     }
     DWORD countFileSymbols;
-    LPCSTR argumentsFromFile = calloc(5000, sizeof(CHAR));
-    if (!ReadFile(Start, argumentsFromFile, 5000, &countFileSymbols, NULL)) //Проверка на првильность чтения данных
+    LPCSTR argumentsFromFile = calloc(4000, sizeof(CHAR));
+    if (!ReadFile(Start, argumentsFromFile, 4000, &countFileSymbols, NULL)) //Проверка на првильность чтения данных
     {
         MessageBox(NULL, L"Возникла ошибка при чтении данных!", L"Оповещение", MB_OK);
         return 0;

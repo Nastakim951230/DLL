@@ -1,9 +1,7 @@
-#include <Windows.h>
+#include <windows.h>
 #include <stdio.h>
 #include "Struktura.h"
 #define PATH L"DLLCode.dll"
-
-
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
